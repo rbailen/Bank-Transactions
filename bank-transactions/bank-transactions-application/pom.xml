@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.codechallenge.banktransactions</groupId>
+		<artifactId>bank-transactions</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<springfox.version>2.9.2</springfox.version>
+		<bank.transactions.persistence.version>0.0.1-SNAPSHOT</bank.transactions.persistence.version>
+	</properties>
+
+	<packaging>jar</packaging>
+	<artifactId>bank-transactions-application</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${springfox.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${springfox.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.codechallenge.banktransactions</groupId>
+			<artifactId>bank-transactions-persistence</artifactId>
+			<version>${bank.transactions.persistence.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>${docker.maven.plugin}</version>
+				<configuration>
+					<tag>latest</tag>
+					<repository>${docker.image.prefix}/${project.parent.artifactId}</repository>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,5 @@
+com\codechallenge\banktransactions\BankTransactionsApplicationTests.class
+com\codechallenge\banktransactions\controller\TransactionControllerIntegrationTest$1.class
+com\codechallenge\banktransactions\controller\TransactionControllerTest.class
+com\codechallenge\banktransactions\controller\TransactionControllerIntegrationTest.class
+com\codechallenge\banktransactions\service\TransactionServiceTest.class
