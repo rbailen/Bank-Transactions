@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "8beb07ec-e93e-4397-9df5-00859b3039b6",
+		"name": "bank-transactions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"reference\": \"12345A\",\r\n\t\"account_iban\": \"ES9820385778983000760236\",\r\n\t\"date\": \"2020-04-04T18:02:42.000Z\",\r\n\t\"amount\": 193.38,\r\n\t\"fee\": 3.18,\r\n\t\"description\": \"Restaurant payment\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search transactions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/transactions/:account_iban?sort=ASC&orderBy=amount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transactions",
+						":account_iban"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "ASC"
+						},
+						{
+							"key": "orderBy",
+							"value": "amount"
+						}
+					],
+					"variable": [
+						{
+							"key": "account_iban",
+							"value": "ES9820385778983000760236"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transaction status",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"reference\":\"12345A\",\r\n\t\"channel\":\"CLIENT\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/transactions/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transactions",
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
